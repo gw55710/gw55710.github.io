@@ -1,0 +1,105 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #18324b;
+  background: #dfecff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background-image: url("volvo-2.png");
+  line-height: 1.7;
+}
+
+header {
+  padding: 3.5rem 1.5rem;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(135deg, #12395b, #2874a6);
+  border-bottom: 6px solid #f0b429;
+}
+
+header h1 {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: min(1200px, calc(100% - 3rem));
+  margin: 2.5rem auto;
+}
+
+main > div {
+  min-width: 0;
+  padding: 1.75rem;
+  overflow-wrap: anywhere;
+  background: #fff;
+  border: 1px solid #c8d9e8;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgb(24 50 75 / 8%);
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  color: #174e76;
+  font-size: 1.6rem;
+}
+
+h3 {
+  margin: 0 0 1rem;
+  color: #a26700;
+  font-size: 1.15rem;
+}
+
+p {
+  margin: 0;
+  color: #354b5f;
+  text-align: left;
+}
+
+footer {
+  padding: 1.5rem;
+  color: #fff;
+  background: #12395b;
+}
+
+footer ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+}
+
+footer li {
+  padding-left: 0.25rem;
+}
+
+@media (max-width: 760px) {
+  header {
+    padding: 2.5rem 1rem;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    width: min(100% - 2rem, 640px);
+    margin: 1.5rem auto;
+  }
+
+  main > div {
+    padding: 1.25rem;
+  }
+}
