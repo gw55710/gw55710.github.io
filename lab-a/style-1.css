@@ -12,7 +12,7 @@
 body {
   min-width: 320px;
   margin: 0;
-  background-image: url("volvo-2.png");
+  background-image: url("actrosL_background.PNG");
   line-height: 1.7;
 }
 
@@ -40,14 +40,64 @@ main {
   margin: 2.5rem auto;
 }
 
-main > div {
+main > section {
   min-width: 0;
   padding: 1.75rem;
   overflow-wrap: anywhere;
-  background: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #c8d9e8;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgb(24 50 75 / 8%);
+}
+
+.actros-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+.actros-gallery img {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 14px rgb(24 50 75 / 20%);
+}
+
+.magnum-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+.magnum-gallery img {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 14px rgb(24 50 75 / 20%);
+}
+
+.magnum-gallery img:last-child {
+  grid-column: 1 / -1;
+  width: min(72%, 420px);
+  justify-self: center;
 }
 
 h2 {
@@ -99,7 +149,22 @@ footer li {
     margin: 1.5rem auto;
   }
 
-  main > div {
+  main > section {
     padding: 1.25rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .actros-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .magnum-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .magnum-gallery img:last-child {
+    grid-column: auto;
+    width: 100%;
   }
 }

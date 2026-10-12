@@ -13,8 +13,10 @@ body {
   min-width: 320px;
   margin: 0;
   background-color: #fff4df;
-  background-image: radial-gradient(#e9c9a0 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image: url("magnum_background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   line-height: 1.8;
 }
 
@@ -68,14 +70,66 @@ main {
   margin: 3rem auto;
 }
 
-main > div {
+main > section {
   min-width: 0;
   padding: 2rem;
   overflow-wrap: anywhere;
-  background: #fffaf0;
+  background-color: rgba(255, 250, 240, 0.8);
   border: 2px dashed #d6a474;
   border-radius: 28px 28px 12px 12px;
   box-shadow: 0 10px 0 #eed9b9, 0 16px 28px rgb(105 66 42 / 10%);
+}
+
+.actros-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+.actros-gallery img {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 14px rgb(86 60 50 / 20%);
+}
+
+.magnum-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.magnum-gallery img {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  justify-self: stretch;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 14px rgb(86 60 50 / 20%);
+}
+
+.magnum-gallery img:last-child {
+  grid-column: 1 / -1;
+  width: min(72%, 420px);
+  justify-self: center;
 }
 
 h2 {
@@ -145,7 +199,7 @@ footer li {
     margin: 2rem auto;
   }
 
-  main > div {
+  main > section {
     padding: 1.5rem;
   }
 }
@@ -154,5 +208,18 @@ footer li {
   header::before,
   header::after {
     display: none;
+  }
+
+  .actros-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .magnum-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .magnum-gallery img:last-child {
+    grid-column: auto;
+    width: 100%;
   }
 }
