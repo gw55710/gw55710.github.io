@@ -1,3 +1,21 @@
+function hamsterAction() {
+    const footer = document.querySelector("footer");
+    const hamsters = footer.querySelectorAll(".hamster-guest");
+
+    if (hamsters.length >= 5) {
+        hamsters[0].remove();
+    }
+
+    const hamster = document.createElement("span");
+    hamster.className = "hamster-guest";
+    hamster.textContent = "🐹";
+    hamster.setAttribute("aria-hidden", "true");
+    hamster.addEventListener("animationend", function () {
+        hamster.remove();
+    });
+    footer.append(hamster);
+}
+
 const todo = {
     tasks: [],
     term: "",
@@ -127,6 +145,7 @@ const todo = {
 
         todo.tasks.push({ name: name.trim(), date: date });
         todo.draw();
+        hamsterAction();
     },
 
     remove: function (index) {
@@ -135,6 +154,7 @@ const todo = {
         }
         todo.tasks.splice(index, 1);
         todo.draw();
+        hamsterAction();
     },
 
     edit: function (index, name, date) {
@@ -147,6 +167,7 @@ const todo = {
 
         todo.tasks[index] = { name: name.trim(), date: date };
         todo.draw();
+        hamsterAction();
     },
 
     editRow: function (row) {
@@ -154,6 +175,7 @@ const todo = {
 
         const index = Number(row.dataset.index);
         const oldTask = todo.tasks[index];
+        hamsterAction();
         const nameInput = document.createElement("input");
         nameInput.type = "text";
         nameInput.minLength = 3;
@@ -196,21 +218,10 @@ const todo = {
 
 todo.load();
 
-const dateLabel = document.createElement("label");
-dateLabel.htmlFor = "task-date";
-dateLabel.textContent = "Termin wykonania (opcjonalnie)";
-const dateInput = document.createElement("input");
-dateInput.id = "task-date";
-dateInput.type = "datetime-local";
-dateLabel.append(dateInput);
-document.querySelector("#add-task-form").insertBefore(
-    dateLabel,
-    document.querySelector("#add-task-form button")
-);
-
 document.querySelector("#task-search").addEventListener("input", function (event) {
     todo.term = event.target.value.trim();
     todo.draw();
+    hamsterAction();
 });
 
 document.querySelector("#add-task-form").addEventListener("submit", function (event) {

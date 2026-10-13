@@ -48,3 +48,62 @@ button {
   cursor: pointer;
   padding: 0.4rem 0.65rem;
 }
+
+footer {
+  align-items: center;
+  border-top: 1px dashed #ccc;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  margin-top: 50px;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+}
+
+.hamster-track {
+  animation: run-in-circle 3s linear infinite;
+  height: 100px;
+  position: relative;
+  width: 100px;
+}
+
+.hamster {
+  font-size: 30px;
+  left: 50%;
+  position: absolute;
+  top: -15px;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.hamster-guest {
+  animation: hamster-dash 2.5s linear forwards;
+  bottom: 8px;
+  font-size: 28px;
+  left: 0;
+  position: absolute;
+}
+
+@keyframes run-in-circle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hamster-dash {
+  from {
+    transform: translateX(-40px) scaleX(1);
+  }
+  45% {
+    transform: translateX(45vw) translateY(-12px) scaleX(1);
+  }
+  50% {
+    transform: translateX(50vw) translateY(0) scaleX(-1);
+  }
+  to {
+    transform: translateX(calc(100vw + 40px)) scaleX(-1);
+  }
+}
