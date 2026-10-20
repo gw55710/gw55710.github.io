@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101a2b">
+    <meta name="description" content="Aktualna pogoda i pięciodniowa prognoza dla wybranej miejscowości.">
+    <title>Pogodnik — pogoda na dziś i jutro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <main class="weather-app">
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="Twoja pogodynka — strona główna">
+                <span class="brand-mark" aria-hidden="true">✳</span>
+                <span>Twoja pogodynka<span class="brand-dot">.</span></span>
+            </a>
+            <span class="topbar-note">Twoja prognoza, zawsze pod ręką</span>
+        </header>
+
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow"><span class="eyebrow-line"></span> POGODA BEZ ZGADYWANIA</p>
+            <h1 id="page-title">Sprawdź, co <span>przyniesie niebo.</span></h1>
+            <p class="intro-copy">Wpisz miejscowość i zobacz aktualne warunki oraz prognozę na najbliższe dni.</p>
+        </section>
+
+        <form class="search-panel" id="weather-form">
+            <label class="field city-field">
+                <span class="field-label">Miejscowość</span>
+                <span class="input-wrap">
+                    <span class="input-icon" aria-hidden="true">⌖</span>
+                    <input id="city-input" name="city" type="text" placeholder="np. Gdańsk, PL" autocomplete="address-level2" required>
+                </span>
+            </label>
+
+            <button class="search-button" id="search-button" type="submit">
+                <span>Sprawdź pogodę</span>
+                <span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+        </form>
+        <p class="key-note">Klucz jest używany tylko w tej karcie przeglądarki i nie jest zapisywany.</p>
+
+        <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+
+        <section class="results" id="results" aria-live="polite" hidden>
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-line"></span> WARUNKI NA TERAZ</p>
+                    <h2>Aktualna pogoda</h2>
+                </div>
+                <p class="updated-at" id="updated-at"></p>
+            </div>
+
+            <article class="current-card" id="current-weather"></article>
+
+            <div class="section-heading forecast-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-line"></span> NAJBLIŻSZE GODZINY</p>
+                    <h2>Prognoza godzinowa</h2>
+                </div>
+                <span class="forecast-unit">NASTĘPNE 18 GODZIN · CO 3 GODZINY</span>
+            </div>
+            <div class="hourly-grid" id="hourly-list"></div>
+
+            <div class="section-heading forecast-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-line"></span> ZAPLANUJ SWÓJ TYDZIEŃ</p>
+                    <h2>Prognoza na 5 dni</h2>
+                </div>
+                <span class="forecast-unit">CO 3 GODZINY · PODSUMOWANIE DZIENNE</span>
+            </div>
+            <div class="forecast-grid" id="forecast-list"></div>
+        </section>
+
+        <footer class="page-footer">
+            <span>Dane pogodowe: OpenWeatherMap</span>
+            <span>Ubierz się do pogody, nie odwrotnie.</span>
+        </footer>
+    </main>
+</body>
+</html>
