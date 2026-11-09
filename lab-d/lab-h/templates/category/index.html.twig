@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kategorie{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <div>
+            <p class="page-kicker">Twoja kolekcja</p>
+            <h1 class="page-title">Kategorie <span class="page-count">{{ categories|length }}</span></h1>
+            <p class="page-subtitle mb-0">Wszystkie wpisy w jednym, uporządkowanym miejscu.</p>
+        </div>
+        <a class="btn btn-primary d-none d-sm-inline-flex" href="{{ path('app_category_new') }}">+ Dodaj kategorię</a>
+    </div>
+
+    <div class="d-sm-none mb-3">
+        <a class="btn btn-primary w-100" href="{{ path('app_category_new') }}">+ Dodaj kategorię</a>
+    </div>
+
+    <section class="content-card d-none d-md-block" aria-label="Lista kategorii">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">Nr</th>
+                        <th scope="col">Tiry</th>
+                        <th scope="col">Tirowcy</th>
+                        <th scope="col">Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% for category in categories %}
+            <tr>
+                <td><span class="record-id">{{ category.id }}</span></td>
+                <td class="category-name">{{ category.tiry }}</td>
+                <td>{{ category.tirowcy }}</td>
+                <td>
+                    <div class="category-actions">
+                        <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_category_show', {'id': category.id}) }}">Szczegóły</a>
+                        <a class="btn btn-sm btn-outline-primary" href="{{ path('app_category_edit', {'id': category.id}) }}">Edytuj</a>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4" class="empty-state">Nie ma jeszcze żadnych kategorii.</td>
+            </tr>
+        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="category-mobile-list d-md-none" aria-label="Lista kategorii">
+        {% for category in categories %}
+            <article class="category-mobile-card">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <span class="record-id">{{ category.id }}</span>
+                    <h2 class="category-mobile-title mb-0">{{ category.tiry }}</h2>
+                </div>
+                <p class="category-mobile-label">Tirowcy</p>
+                <p class="category-mobile-value mb-3">{{ category.tirowcy }}</p>
+                <div class="category-actions">
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_category_show', {'id': category.id}) }}">Szczegóły</a>
+                    <a class="btn btn-sm btn-outline-primary" href="{{ path('app_category_edit', {'id': category.id}) }}">Edytuj</a>
+                </div>
+            </article>
+        {% else %}
+            <div class="content-card empty-state">Nie ma jeszcze żadnych kategorii.</div>
+        {% endfor %}
+    </section>
+{% endblock %}

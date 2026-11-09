@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nowa kategoria{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <div>
+            <p class="page-kicker">Nowy wpis</p>
+            <h1 class="page-title">Dodaj kategorię</h1>
+            <p class="page-subtitle mb-0">Uzupełnij dane, aby dodać ją do kolekcji.</p>
+        </div>
+    </div>
+    <div class="content-card form-panel p-3 p-md-4">
+        {{ include('category/_form.html.twig', {'button_label': 'Dodaj kategorię'}) }}
+        <a class="btn btn-link px-0 mt-2" href="{{ path('app_category_index') }}">Wróć do listy</a>
+    </div>
+{% endblock %}
